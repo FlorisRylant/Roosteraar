@@ -30,7 +30,7 @@ def set_van_lessen(lessen, key):
     return leraren
 
 def koppel_lessen(lessen, *ids): # variabel aantal id's gegeven => die id's zijn niet meer nuttig maar dat moet ergens anders opgeslagen worden
-    nieuw = {'id':len(lessen), 'leraren':[], 'vakken':[], 'klassen':[]}
+    nieuw = {'id':len(lessen), 'leraren':[], 'vakken':[], 'klassen':[], 'bron':ids}
     for id in ids:
         les = lessen[id]
         for leraar in les['leraren']:
@@ -42,6 +42,18 @@ def koppel_lessen(lessen, *ids): # variabel aantal id's gegeven => die id's zijn
         if nieuw.get('uren', les['uren']) != les['uren']: raise ValueError('Niet evenveel uren in elke les')
         nieuw['uren'] = les['uren']
     lessen.append(nieuw)
+
+def ontkoppel_rooster(rooster_file, lessen):
+    with open(rooster_file) as file:
+        blokken = file.readlines()
+    with open(rooster_file, 'w') as file:
+        for blok in blokken:
+            regel = ''
+            for les in blok.strip().split(','):
+                if 'bron' in lessen[int(les)].keys(): regel += ','.join(lessen[int[les]])
+                else: regel += les
+                regel += ','
+            file.write(regel[:-1]+'\n')
 
 
 if __name__=='__main__':
