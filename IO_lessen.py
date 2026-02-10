@@ -77,10 +77,21 @@ def ontkoppel_rooster(rooster_file, lessen):
                 regel += ','
             file.write(regel[:-1]+'\n')
 
+def filter_lessen(lessen):
+    """Geeft een lijst terug met alle lessen buiten degenen die al in een samengevoegde les zitten."""
+    lessen_te_filteren = []
+    for les in lessen:
+        if 'bron' in les.keys():
+            lessen_te_filteren += list(les['bron'])
+    out = []
+    for les in lessen:
+        if les['id'] not in lessen_te_filteren: out.append(les)
+    return out
 
 if __name__=='__main__':
     testlessen = input_file_naar_lessen()
     print_lessen(testlessen)
     print(set_van_lessen(testlessen, 'leraren'))
     koppel_lessen(testlessen, 33, 99)
+    testlessen = filter_lessen(testlessen)
     print_lessen(testlessen)
