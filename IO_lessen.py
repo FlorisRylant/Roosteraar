@@ -65,9 +65,7 @@ def koppel_lessen(lessen, *ids): # variabel aantal id's gegeven => die id's zijn
     lessen.append(nieuw)
 
 def ontkoppel_rooster(rooster_file, lessen):
-    """
-    Zorgt dat in een rooster de samengesmolten lessen terug in hun componenten gesplitst worden (optioneel) in het bestand
-    """
+    """Zorgt dat in een rooster de samengesmolten lessen terug in hun componenten gesplitst worden (optioneel) in het bestand"""
     with open(rooster_file) as file:
         blokken = file.readlines()
     with open(rooster_file, 'w') as file:
