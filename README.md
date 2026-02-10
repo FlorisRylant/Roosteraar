@@ -3,6 +3,7 @@ Doel van de software: betere lessenroosters kunnen maken dan Untis (geen rekenin
 
 # Methode
 Deel 1: een werkend lessenrooster maken (moeilijkste deel)
+
 Preprocessor:
 - alle lessen worden eringezet vanuit de "opdrachten" van de leerkrachten
 - zo veel mogelijk systemen om lessen te koppelen tot één "les" in het programma:
@@ -13,6 +14,7 @@ Preprocessor:
   - > als meerdere klassen dit type les hebben en een permutatie is mogelijk: samenvoegen tot één "keuzevak" (waar de leerlingen dan geen keuze hebben)
   - CLIL: keuzevak tussen "normaal" en "andere taal"
   - ...
+
 Algoritmes mogelijk (voorlopig onbekend of ze werken):
 - alle lessen een "gewicht" toekennen en dan steeds de lessen met het hoogste gewicht eerst inplannen -> heel snel aanpasbaar en heel algemeen maar moeilijk om te perfectioneren
 - gewoon proberen tot het lukt -> kleine slaagkans maar extreem simpel
