@@ -1,8 +1,3 @@
-"""
-Structuur van lessen-file:
-
-"""
-
 def input_regel_naar_dict(line, id):
     """
     Maakt van een regel van de structuur
@@ -87,6 +82,10 @@ def filter_lessen(lessen):
     for les in lessen:
         if les['id'] not in lessen_te_filteren: out.append(les)
     return out
+
+def lessen_naar_file(rooster, dest='nieuw_rooster.csv'):
+    """Zet een rooster (lijst van sets) naar een csv-bestand"""
+    with open(dest, 'w') as file: file.write('\n'.join([','.join([str(i) for i in blok]) for blok in rooster]))
 
 if __name__=='__main__':
     testlessen = input_file_naar_lessen()
