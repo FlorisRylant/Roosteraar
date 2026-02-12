@@ -49,9 +49,7 @@ def maak_rooster(lessen):
     return rooster
 
 if __name__=='__main__':
-    dummy = input_file_naar_lessen()
-    koppel_lessen(dummy, 33, 99)
-    dummy = filter_lessen(dummy)
+    dummy = input_file_naar_lessen('dummy_lessen_oud.csv')
     print_lessen(dummy)
     update_gewichten(dummy)
     rooster = maak_rooster(dummy)

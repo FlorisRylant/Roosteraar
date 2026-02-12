@@ -83,14 +83,22 @@ def filter_lessen(lessen):
         if les['id'] not in lessen_te_filteren: out.append(les)
     return out
 
+def filter_jaren(lessen, jaren='123456'):
+    out = []
+    for les in lessen:
+        for klas in les['klassen']:
+            if klas[0] in jaren:
+                out.append(les)
+                break
+    return out
+
 def lessen_naar_file(rooster, dest='nieuw_rooster.csv'):
     """Zet een rooster (lijst van sets) naar een csv-bestand"""
     with open(dest, 'w') as file: file.write('\n'.join([','.join([str(i) for i in blok]) for blok in rooster]))
 
 if __name__=='__main__':
-    testlessen = input_file_naar_lessen()
+    testlessen = input_file_naar_lessen('dummy_totaal.csv')
     print_lessen(testlessen)
     print(set_van_lessen(testlessen, 'leraren'))
-    koppel_lessen(testlessen, 33, 99)
-    testlessen = filter_lessen(testlessen)
+    testlessen = filter_jaren(testlessen, '123')
     print_lessen(testlessen)
